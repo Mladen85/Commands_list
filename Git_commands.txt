@@ -62,7 +62,13 @@ git push --set-upstream origin master
 #-----------------------------------------------------------------------------------
 
 #Git Clone
-
+git clone <git_url>
+#Clone into specific directory
+git clone <git_url> <dir_name>
+#Clone and recurse into submodules (git versions 1.9 - 2.12)
+git clone --recursive <git_url>
+#Clone and recurse into submodules (git version 2.13+)
+git clone --recurse-submodules <git_url?
 
 #-----------------------------------------------------------------------------------
 
