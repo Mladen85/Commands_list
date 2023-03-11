@@ -24,6 +24,31 @@ source ~/.bashrc
 
 #-----------------------------------------------------------------------------------
 
+#Check if key already exist
+ls -la ~/.ssh
+#If id_rsa and id_rsa.pub keys do not exist
+#generate new keys
+ssh-keygen -t rsa -C "<E-mail_address>"
+#check if ssh-agent is running
+eval "$(ssh-agent -s)"
+#Add new genereted key to ssh-agent
+ssh-add ~/.ssh/id_rsa
+#Copy public key and paste to GitHub
+cat ~/.ssh/id_rsa
+#Test if key is working
+ssh -T git@github.com
+
+#-----------------------------------------------------------------------------------
+
+#Set anonymous E-mail
+#In GitHub go to Settings->Emails
+#In section Primary email address there is information what E-mail format will be used for web-based Git operations
+#<ID>+<User_name>@users.noreply.github.com
+git config --global user.email "{ID}+{username}@users.noreply.github.com"
+
+
+#-----------------------------------------------------------------------------------
+
 #Git Init
 git init <dir_name>
 git remote add origin <git_url>
