@@ -5,6 +5,7 @@
 #Format bash terminal (show branch name in terminal)
 #add following lines at the end of ~/.bashrc
 #######################
+##Start: add branch name in terminal
 # Show git branch name
 force_color_prompt=yes
 color_prompt=yes
@@ -17,6 +18,7 @@ else
  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 fi
 unset color_prompt force_color_prompt
+##End:   add branch name in terminal
 #######################
 
 #Relaod the .bashrc file
@@ -45,7 +47,8 @@ ssh -T git@github.com
 #In section Primary email address there is information what E-mail format will be used for web-based Git operations
 #<ID>+<User_name>@users.noreply.github.com
 git config --global user.email "{ID}+{username}@users.noreply.github.com"
-
+#Add new commit or amend existing one to update new E-mail
+git commit <--amend>
 
 #-----------------------------------------------------------------------------------
 
@@ -59,4 +62,29 @@ git push --set-upstream origin master
 #-----------------------------------------------------------------------------------
 
 #Git Clone
+
+
+#-----------------------------------------------------------------------------------
+
+#How to copy file from one branch to another
+git checkout main README.md
+
+#-----------------------------------------------------------------------------------
+
+#
+
+#-----------------------------------------------------------------------------------
+
+#Git merge
+
+
+
+#If local git repo is added to existing remote repo, it will be considered as two different projects
+#Merge can be done using
+git pull origin master --allow-unrelated-histories
+#or
+git merge <branch_name> --allow-unrelated-histories
+
+
+#-----------------------------------------------------------------------------------
 
