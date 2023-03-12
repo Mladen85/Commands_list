@@ -1,0 +1,122 @@
+
+
+#============================================================================
+# Add new system user
+# See configuration file /etc/adduser.conf
+# --shell SHELL sets default shel for user, usualy is /bin/bash.
+#    Can be also /bin/sh
+# --uid USERID - sets userID to USERID.
+#    System users starts with 100 and goes to 999 (by default)
+# --gid GROUPID - sets primary UserName group ID to GROUPID.
+#    System groups starts with 100 and goes to 999 (by default)
+adduser --system [--shell /bin/bash] [--uid USERID] [--gid GROUPID] UserName
+#============================================================================
+
+#============================================================================
+# Add new normal user
+#    Normal user ID starts with 1000 and goes to 59999 (by default)
+#    Normal group ID starts with 1000 and goes to 59999 (by default)
+adduser [--shell /bin/bash] [--uid USERID] [--gid GROUPID] UserName
+#============================================================================
+
+#============================================================================
+# Add new system group
+addgroup --system [--gid GROUPID] GroupName
+#============================================================================
+
+#============================================================================
+# Add new normal group (2 ways)
+adduser --group [--gid GROUPID] GroupName
+# or
+addgroup [--gid GROUPID] GroupName
+#============================================================================
+
+#============================================================================
+# Add an existing user to an existing group
+adduser UserName GroupName
+#============================================================================
+
+#============================================================================
+# Add user to sudo group (2 ways)
+sudo adduser UserName sudo
+# or
+usermod -aG sudo UserName
+#============================================================================
+
+#============================================================================
+# Switch user
+su -l UserName
+#============================================================================
+
+#============================================================================
+# Change owner for DirName/FileName to specific user
+# Use -R for recursive (apply change to all sub-directories and files)
+# -v - verbose (print information)
+chown -v -R UserName DirName
+# or
+chown -v UserName FileName
+#============================================================================
+
+#============================================================================
+# Change owner for DirName/FileName to specific group
+# Use -R for recursive (apply change to all sub-directories)
+chown -v -R :GroupName DirName
+# or
+chown -v :GroupName FileName
+#============================================================================
+
+#============================================================================
+# Change owner for DirName/FileName to specific user and group at same time
+chown -v -R UserName:GroupName DirName
+# or
+chown -v UserName:GroupName FileName
+#============================================================================
+
+#============================================================================
+# Change mode for DirName/FileName to desired mode
+# iabcdefghj -
+#    i - for directory d, for file -, for link l
+#    abc - access mode for user  (a - read (r or -), b - write (w or -), c - execute (x or -)
+#    def - access mode for group (d - read (r or -), e - write (w or -), f - execute (x or -)
+#    ghj - access mode for everyone else (g - read (r or -), h - write (w or -), j - execute (x or -)
+#---------------------------------------------------------------------------
+#    Examples:
+#        chmod +x FileName - add (+) execute mode to all all (user, group, everyone else)
+#        chmod -r FileName - remove (-) read mode to all all (user, group, everyone else)
+#        chmod 754 FileName - set rwx for user owner, set r-x for group owner, set r-- for everyone else
+#                             r,w,x for user (7 = 111), set r,x for group (5 = 101), set r foreveryone else (4 = 100)
+# -R - recursive
+# -v - verbose
+chmod -v -R MODE[,MODE] DirName
+# or
+chmod -v OCTAL-MODE FileName
+#============================================================================
+
+#============================================================================
+# Rename user
+usermod -l NewUserName OldUserName
+#============================================================================
+
+#============================================================================
+# Rename group
+groupmod [--gid GROUPID] -n NewGroupname OldGroupName
+#============================================================================
+
+#============================================================================
+# List all groups
+cat /etc/group
+#============================================================================
+
+#============================================================================
+# List groups for selected user/users
+group UserName1 [UserName2] [UserNameN]
+#============================================================================
+
+#============================================================================
+#
+
+
+
+
+
+
