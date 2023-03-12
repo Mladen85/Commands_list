@@ -7,13 +7,15 @@
 #######################
 ##Start: add branch name in terminal
 # Show git branch name
+# '\012' - new line (ASCII)
+# '\033' - ESC (ASCII)
 force_color_prompt=yes
 color_prompt=yes
 parse_git_branch() {
  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 if [ "$color_prompt" = yes ]; then
- PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(parse_git_branch)\[\033[00m\]\$ '
+ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\] $(parse_git_branch)\[\033[00m\]\012\$ '
 else
  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 fi
@@ -68,7 +70,7 @@ git clone <git_url> <dir_name>
 #Clone and recurse into submodules (git versions 1.9 - 2.12)
 git clone --recursive <git_url>
 #Clone and recurse into submodules (git version 2.13+)
-git clone --recurse-submodules <git_url?
+git clone --recurse-submodules <git_url>
 
 #-----------------------------------------------------------------------------------
 
