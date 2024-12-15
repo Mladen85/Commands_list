@@ -43,13 +43,18 @@ git config --global user.email "{ID}+{username}@users.noreply.github.com"
 git commit <--amend>
 
 # To fix file name too long run command from GIT Bash as admin
-git config --system core.longpaths true
+sudo git config --system core.longpaths true
 
 # To manually add configuration use command with flag -e (this open config in editor) 
 git config --system -e
 git config --global -e
 
 # System Config
+sudo git config --system core.editor "vim"
+sudo git config --system diff.tool "vimdiff"
+sudo git config --system difftool.prompt false
+sudo git config --system merge.tool "vimdiff"
+
 [core]
 	longpaths = true
 
@@ -237,7 +242,8 @@ git log --oneline --graph
 
 #-----------------------------------------------------------------------------------
 
-#
+#Rename committed/stashed file file
+git mv <old_file_name> <new_file_name>
 
 #-----------------------------------------------------------------------------------
 
