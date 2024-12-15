@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Check if a directory parameter is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <directory>"
+    exit 1
+fi
+
+# Directory to search
+TARGET_DIR="$1"
+
+# Find all directories, including hidden ones, in the specified path
+for dir in $(find "$TARGET_DIR" -maxdepth 1 -type d) ; do
+    # Use du -sh to get the size and display it
+    du -sh "$dir"
+done

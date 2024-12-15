@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Entire disk size command 'df':"
+echo "Entire disk size command (human-readable) 'df -h':"
+
+echo "Directory size command 'du':"
+echo "Directory size command (human-readable) 'du -h':"
+echo "Directory size command (human-readable, total size for current dir) 'du -hs':"
+echo "Directory size command (human-readable, total size for current dir, size of elements in dir) 'du -hs <dir_path>/*':"
+
+du $1 $2
